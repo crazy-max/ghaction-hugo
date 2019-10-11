@@ -1,0 +1,39 @@
+name: ci
+
+on:
+  pull_request:
+    branches:
+      - master
+      - releases/*
+  push:
+    branches:
+      - master
+      - releases/*
+
+jobs:
+  ci:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - macOS-latest
+          - windows-latest
+        version:
+          - latest
+          - v0.58.3
+        extended:
+          - false
+          - true
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v1
+      -
+        name: Hugo
+        uses: ./
+        with:
+          version: ${{ matrix.version }}
+          extended: ${{ matrix.extended }}
+          args: version

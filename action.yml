@@ -1,0 +1,21 @@
+# https://help.github.com/en/articles/metadata-syntax-for-github-actions
+name: 'Hugo Action'
+description: "GitHub Action for Hugo, the world's fastest framework for building websites"
+author: 'crazy-max'
+branding:
+  color: 'blue'
+  icon: 'package'
+
+inputs:
+  version:
+    description: 'Hugo version. Example: v0.58.3'
+    default: 'latest'
+  extended:
+    description: 'Use Hugo extended'
+    default: 'false'
+  args:
+    description: 'Arguments to pass to Hugo'
+
+runs:
+  using: 'node12'
+  main: 'lib/main.js'
