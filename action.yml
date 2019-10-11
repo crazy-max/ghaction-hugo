@@ -1,5 +1,5 @@
 # https://help.github.com/en/articles/metadata-syntax-for-github-actions
-name: 'Hugo Action'
+name: 'Hugo GitHub Action'
 description: "GitHub Action for Hugo, the world's fastest framework for building websites"
 author: 'crazy-max'
 branding:

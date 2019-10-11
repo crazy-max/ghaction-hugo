@@ -1,5 +1,5 @@
 {
-  "name": "hugo-action",
+  "name": "hugo-github-action",
   "private": true,
   "description": "GitHub Action for Hugo, the world's fastest framework for building websites",
   "main": "lib/main.js",
