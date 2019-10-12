@@ -13,7 +13,7 @@ GitHub Action for [Hugo](https://gohugo.io/), the world's fastest framework for 
 
 ## 🚀 Usage
 
-Below is a simple snippet to use this action. A [live example](https://github.com/crazy-max/ghaction-hugo/actions) is also available for this repository.
+Below is a simple snippet to use this action. A [live example](https://github.com/crazy-max/ghaction-hugo/actions) is also available for this repository as well as a ['production-ready' example](https://github.com/crazy-max/crazymax.dev).
 
 ```yaml
 name: hugo
@@ -27,15 +27,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -
+        # https://github.com/actions/checkout
         name: Checkout
         uses: actions/checkout@master
       -
+        # https://github.com/crazy-max/ghaction-hugo
         name: Run Hugo
         uses: crazy-max/ghaction-hugo@v1
         with:
           version: latest
           extended: false
-          args: version
+          args: --cleanDestinationDir --minify --verbose
+      -
+        # https://github.com/crazy-max/ghaction-github-pages
+        name: Deploy
+        if: success() && github.event_name != 'pull_request'
+        uses: crazy-max/ghaction-github-pages@v1
+        with:
+          target_branch: gh-pages
+          build_dir: public
+        env:
+          GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
 ```
 
 ## 💅 Customizing
