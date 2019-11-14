@@ -11,8 +11,6 @@ GitHub Action for [Hugo](https://gohugo.io/), the world's fastest framework for 
 
 If you are interested, [check out](https://git.io/Je09Y) my other :octocat: GitHub Actions!
 
-> **:warning: Note:** To use this action, you must have access to the [GitHub Actions](https://github.com/features/actions) feature. GitHub Actions are currently only available in public beta. You can [apply for the GitHub Actions beta here](https://github.com/features/actions/signup/).
-
 ## 🚀 Usage
 
 Below is a simple snippet to use this action. A [live example](https://github.com/crazy-max/ghaction-hugo/actions) is also available for this repository as well as a ['production-ready' example](https://github.com/crazy-max/crazymax.dev).
