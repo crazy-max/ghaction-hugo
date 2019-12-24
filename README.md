@@ -29,7 +29,7 @@ jobs:
       -
         # https://github.com/actions/checkout
         name: Checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@v1
       -
         # https://github.com/crazy-max/ghaction-hugo
         name: Run Hugo
