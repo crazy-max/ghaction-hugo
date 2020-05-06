@@ -1,6 +1,7 @@
 [![GitHub release](https://img.shields.io/github/release/crazy-max/ghaction-hugo.svg?style=flat-square)](https://github.com/crazy-max/ghaction-hugo/releases/latest)
 [![GitHub marketplace](https://img.shields.io/badge/marketplace-hugo--github--action-blue?logo=github&style=flat-square)](https://github.com/marketplace/actions/hugo-github-action)
-[![Test workflow](https://github.com/crazy-max/ghaction-hugo/workflows/test/badge.svg)](https://github.com/crazy-max/ghaction-hugo/actions?workflow=test)
+[![Test workflow](https://img.shields.io/github/workflow/status/crazy-max/ghaction-hugo/test?label=test&logo=github&style=flat-square)](https://github.com/crazy-max/ghaction-hugo/actions?workflow=test)
+[![Codecov](https://img.shields.io/codecov/c/github/crazy-max/ghaction-hugo?logo=codecov&style=flat-square)](https://codecov.io/gh/crazy-max/ghaction-hugo)
 [![Become a sponsor](https://img.shields.io/badge/sponsor-crazy--max-181717.svg?logo=github&style=flat-square)](https://github.com/sponsors/crazy-max)
 [![Paypal Donate](https://img.shields.io/badge/donate-paypal-00457c.svg?logo=paypal&style=flat-square)](https://www.paypal.me/crazyws)
 
@@ -37,7 +38,7 @@ jobs:
           args: --cleanDestinationDir --minify --verbose
       -
         # https://github.com/crazy-max/ghaction-github-pages
-        name: Deploy
+        name: Deploy to GitHub Pages
         if: success() && github.event_name != 'pull_request'
         uses: crazy-max/ghaction-github-pages@v1
         with:
