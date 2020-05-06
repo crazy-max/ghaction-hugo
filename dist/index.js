@@ -4635,7 +4635,7 @@ function run(silent) {
 }
 exports.run = run;
 run();
-
+//# sourceMappingURL=main.js.map
 
 /***/ }),
 
@@ -21043,7 +21043,7 @@ function determineVersion(version) {
         return res.result.tag_name;
     });
 }
-
+//# sourceMappingURL=installer.js.map
 
 /***/ }),
 
