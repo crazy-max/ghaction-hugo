@@ -26,7 +26,7 @@ jobs:
       -
         # https://github.com/actions/checkout
         name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       -
         # https://github.com/crazy-max/ghaction-hugo
         name: Run Hugo
