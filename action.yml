@@ -8,7 +8,7 @@ branding:
 
 inputs:
   version:
-    description: 'Hugo version. Example: v0.58.3'
+    description: 'Hugo version'
     default: 'latest'
   extended:
     description: 'Use Hugo extended'
