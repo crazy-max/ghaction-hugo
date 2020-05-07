@@ -51,4 +51,4 @@ const getFilename = (semver: string, extended: boolean): string => {
   const ext: string = osPlat == 'win32' ? 'zip' : 'tar.gz';
   const name: string = extended ? 'hugo_extended' : 'hugo';
   return util.format('%s_%s_%s-%s.%s', name, semver, platform, arch, ext);
-}
+};
