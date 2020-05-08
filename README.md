@@ -11,6 +11,8 @@ GitHub Action for [Hugo](https://gohugo.io/), the world's fastest framework for 
 
 If you are interested, [check out](https://git.io/Je09Y) my other :octocat: GitHub Actions!
 
+![Hugo GitHub Action](.github/ghaction-hugo.png)
+
 ## Usage
 
 ```yaml
