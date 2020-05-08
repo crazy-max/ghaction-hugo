@@ -4633,7 +4633,7 @@ function getHugo(version, extended) {
             extPath = yield tc.extractTar(downloadPath);
         }
         core.debug(`Extracted to ${extPath}`);
-        const cachePath = yield tc.cacheDir(extPath, 'ghaction-mage', semver);
+        const cachePath = yield tc.cacheDir(extPath, 'ghaction-hugo', semver);
         core.debug(`Cached to ${cachePath}`);
         const exePath = path.join(cachePath, osPlat == 'win32' ? 'hugo.exe' : 'hugo');
         core.debug(`Exe path is ${exePath}`);

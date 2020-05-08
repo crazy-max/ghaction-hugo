@@ -36,7 +36,7 @@ export async function getHugo(version: string, extended: boolean): Promise<strin
   }
   core.debug(`Extracted to ${extPath}`);
 
-  const cachePath: string = await tc.cacheDir(extPath, 'ghaction-mage', semver);
+  const cachePath: string = await tc.cacheDir(extPath, 'ghaction-hugo', semver);
   core.debug(`Cached to ${cachePath}`);
 
   const exePath: string = path.join(cachePath, osPlat == 'win32' ? 'hugo.exe' : 'hugo');
