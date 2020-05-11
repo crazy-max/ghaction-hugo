@@ -27,11 +27,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -
-        # https://github.com/actions/checkout
         name: Checkout
         uses: actions/checkout@v2
       -
-        # https://github.com/crazy-max/ghaction-hugo
         name: Run Hugo
         uses: crazy-max/ghaction-hugo@v1
         with:
@@ -39,15 +37,14 @@ jobs:
           extended: false
           args: --cleanDestinationDir --minify --verbose
       -
-        # https://github.com/crazy-max/ghaction-github-pages
         name: Deploy to GitHub Pages
         if: success() && github.event_name != 'pull_request'
-        uses: crazy-max/ghaction-github-pages@v1
+        uses: crazy-max/ghaction-github-pages@v2
         with:
           target_branch: gh-pages
           build_dir: public
         env:
-          GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 ## Customizing

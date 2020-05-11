@@ -10,11 +10,14 @@ inputs:
   version:
     description: 'Hugo version'
     default: 'latest'
+    required: false
   extended:
     description: 'Use Hugo extended'
     default: 'false'
+    required: false
   args:
     description: 'Arguments to pass to Hugo'
+    required: false
 
 runs:
   using: 'node12'
