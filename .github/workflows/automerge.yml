@@ -2,22 +2,20 @@ name: automerge
 
 on:
   pull_request:
-    branches:
-      - master
+    types:
+      - labeled
+      - unlabeled
+      - synchronize
+      - unlocked
+  check_suite:
+    types:
+      - completed
+  status: {}
 
 jobs:
   dependabot:
     runs-on: ubuntu-latest
-    if: >
-      github.event_name == 'pull_request' &&
-      github.event.pull_request.draft == false && (
-        github.event.action == 'opened'
-        || github.event.action == 'reopened'
-        || github.event.action == 'synchronize'
-      ) && (
-        github.actor == 'dependabot[bot]'
-        || github.actor == 'dependabot-preview[bot]'
-      )
+    if: github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]'
     steps:
       -
         name: Approve
