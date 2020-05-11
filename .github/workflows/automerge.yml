@@ -2,37 +2,47 @@ name: automerge
 
 on:
   pull_request:
-    types:
-      - labeled
-      - unlabeled
-      - synchronize
-      - opened
-      - edited
-      - ready_for_review
-      - reopened
-      - unlocked
-  pull_request_review:
-    types:
-      - submitted
-  check_suite:
-    types:
-      - completed
-  status: {}
-
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  MERGE_METHOD: squash
-  MERGE_DELETE_BRANCH: true
-  MERGE_RETRIES: 3
-  MERGE_RETRY_SLEEP: 60000
+    branches:
+      - master
 
 jobs:
   automerge-dependabot:
     runs-on: ubuntu-latest
+    if: >
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.draft == false && (
+        github.event.action == 'opened' ||
+        github.event.action == 'reopened' ||
+        github.event.action == 'synchronize'
+      ) && (
+        github.actor == 'dependabot-preview[bot]' ||
+        github.actor == 'dependabot-preview[bot]'
+      )
     steps:
-      - name: Automerge
-        if: github.event.pull_request.user.login == 'dependabot[bot]' || github.event.pull_request.user.login == 'dependabot-preview[bot]'
-        uses: pascalgn/automerge-action@v0.8.1
-        env:
-          UPDATE_LABELS: NEVER_MATCHES
-          MERGE_COMMIT_MESSAGE: automatic
+      -
+        name: Approve
+        uses: actions/github-script@0.9.0
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            await github.pulls.createReview({
+              owner: context.payload.repository.owner.login,
+              repo: context.payload.repository.name,
+              pull_number: context.payload.pull_request.number,
+              event: 'APPROVE'
+            })
+      -
+        name: Wait
+        run: sleep 3
+      -
+        name: Merge
+        uses: actions/github-script@0.9.0
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            await github.pulls.merge({
+              owner: context.payload.repository.owner.login,
+              repo: context.payload.repository.name,
+              pull_number: context.payload.pull_request.number,
+              merge_method: 'squash'
+            })
