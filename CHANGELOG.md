@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.4.0 (2020/10/01)
+## 1.4.0 (2021/03/30)
 
 * Bump y18n from 4.0.0 to 4.0.1 (#204)
 * Container dev workflow (#203)
