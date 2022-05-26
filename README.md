@@ -39,7 +39,7 @@ jobs:
         uses: actions/checkout@v2
       -
         name: Run Hugo
-        uses: crazy-max/ghaction-hugo@v1
+        uses: crazy-max/ghaction-hugo@v2
         with:
           version: latest
           extended: false
@@ -47,7 +47,7 @@ jobs:
       -
         name: Deploy to GitHub Pages
         if: success() && github.event_name != 'pull_request'
-        uses: crazy-max/ghaction-github-pages@v2
+        uses: crazy-max/ghaction-github-pages@v3
         with:
           target_branch: gh-pages
           build_dir: public
