@@ -9,7 +9,7 @@
 
 GitHub Action for [Hugo](https://gohugo.io/), the world's fastest framework for building websites.
 
-If you are interested, [check out](https://git.io/Je09Y) my other :octocat: GitHub Actions!
+If you are interested, [check out](https://github.com/crazy-max?tab=repositories&q=ghaction&type=source&language=&sort=) my other :octocat: GitHub Actions!
 
 ![Hugo GitHub Action](.github/ghaction-hugo.png)
 
