@@ -26,7 +26,7 @@ jobs:
           - windows-latest
         version:
           - latest
-          - v0.58.3
+          - v0.104.2
         extended:
           - false
           - true

@@ -8,9 +8,9 @@ describe('github', () => {
     expect(release?.tag_name).not.toEqual('');
   });
 
-  it('returns v0.58.3 Hugo GitHub release', async () => {
-    const release = await github.getRelease('v0.58.3');
+  it('returns v0.104.2 Hugo GitHub release', async () => {
+    const release = await github.getRelease('v0.104.2');
     expect(release).not.toBeNull();
-    expect(release?.tag_name).toEqual('v0.58.3');
+    expect(release?.tag_name).toEqual('v0.104.2');
   });
 });
