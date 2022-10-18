@@ -9,7 +9,7 @@ async function run(): Promise<void> {
     const args = core.getInput('args');
     const hugo = await installer.getHugo(version, /true/i.test(extended));
 
-    core.info('🏃 Running Hugo...');
+    core.info('Running Hugo...');
     await exec.exec(`${hugo} ${args}`);
   } catch (error) {
     core.setFailed(error.message);

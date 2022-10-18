@@ -15,7 +15,7 @@ export async function getHugo(version: string, extended: boolean): Promise<strin
   }
   const semver: string = release.tag_name.replace(/^v/, '');
 
-  core.info(`✅ Hugo version found: ${release.tag_name}`);
+  core.info(`Hugo version found: ${release.tag_name}`);
   const filename = getFilename(semver, extended);
   const downloadUrl: string = util.format(
     'https://github.com/gohugoio/hugo/releases/download/%s/%s',
@@ -23,11 +23,11 @@ export async function getHugo(version: string, extended: boolean): Promise<strin
     filename
   );
 
-  core.info(`⬇️ Downloading ${downloadUrl}...`);
+  core.info(`Downloading ${downloadUrl}...`);
   const downloadPath: string = await tc.downloadTool(downloadUrl);
   core.debug(`Downloaded to ${downloadPath}`);
 
-  core.info('📦 Extracting Hugo...');
+  core.info('Extracting Hugo...');
   let extPath: string;
   if (osPlat == 'win32') {
     extPath = await tc.extractZip(downloadPath);
@@ -45,10 +45,10 @@ export async function getHugo(version: string, extended: boolean): Promise<strin
   return exePath;
 }
 
-const getFilename = (semver: string, extended: boolean): string => {
-  const platform: string = osPlat == 'win32' ? 'Windows' : osPlat == 'darwin' ? 'macOS' : 'Linux';
-  const arch: string = osArch == 'x64' ? '64bit' : '32bit';
+const getFilename = (version: string, extended: boolean): string => {
+  const platform: string = osPlat == 'win32' ? 'windows' : osPlat == 'darwin' ? 'darwin' : 'Linux';
+  const arch: string = osPlat == 'darwin' ? 'universal' : osPlat == 'win32' ? 'amd64' : '64bit';
   const ext: string = osPlat == 'win32' ? 'zip' : 'tar.gz';
   const name: string = extended ? 'hugo_extended' : 'hugo';
-  return util.format('%s_%s_%s-%s.%s', name, semver, platform, arch, ext);
+  return util.format('%s_%s_%s-%s.%s', name, version, platform, arch, ext);
 };

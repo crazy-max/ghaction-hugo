@@ -3,13 +3,13 @@ import * as fs from 'fs';
 import * as installer from '../src/installer';
 
 describe('installer', () => {
-  it('acquires v0.58.3 version of Hugo', async () => {
-    const hugo = await installer.getHugo('v0.58.3', false);
+  it('acquires v0.104.2 version of Hugo', async () => {
+    const hugo = await installer.getHugo('v0.104.2', false);
     expect(fs.existsSync(hugo)).toBe(true);
   }, 100000);
 
-  it('acquires v0.58.3 version of Hugo (extended)', async () => {
-    const hugo = await installer.getHugo('v0.58.3', true);
+  it('acquires v0.104.2 version of Hugo (extended)', async () => {
+    const hugo = await installer.getHugo('v0.104.2', true);
     expect(fs.existsSync(hugo)).toBe(true);
   }, 100000);
 
