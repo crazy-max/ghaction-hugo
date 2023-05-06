@@ -7,7 +7,8 @@
 
 ## About
 
-GitHub Action for [Hugo](https://gohugo.io/), the world's fastest framework for building websites.
+GitHub Action for [Hugo](https://gohugo.io/), the world's fastest framework for
+building websites.
 
 ![Hugo GitHub Action](.github/ghaction-hugo.png)
 
@@ -25,8 +26,8 @@ ___
 name: hugo
 
 on:
-  pull_request:
   push:
+  pull_request:
 
 jobs:
   hugo:
@@ -44,7 +45,7 @@ jobs:
           args: --cleanDestinationDir --minify --verbose
       -
         name: Deploy to GitHub Pages
-        if: success() && github.event_name != 'pull_request'
+        if: github.event_name != 'pull_request'
         uses: crazy-max/ghaction-github-pages@v3
         with:
           target_branch: gh-pages
