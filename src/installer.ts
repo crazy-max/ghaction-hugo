@@ -6,7 +6,6 @@ import * as httpm from '@actions/http-client';
 import * as tc from '@actions/tool-cache';
 
 const osPlat: string = os.platform();
-const osArch: string = os.arch();
 
 export interface GitHubRelease {
   id: number;
