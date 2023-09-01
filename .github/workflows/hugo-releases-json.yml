@@ -17,7 +17,7 @@ on:
 
 jobs:
   generate:
-    uses: crazy-max/.github/.github/workflows/releases-json.yml@6dc31870ca6c4f8489bf5a408ab38fae60f47eec
+    uses: crazy-max/.github/.github/workflows/releases-json.yml@1e1c5b3d17c38b791adc01905d1e46b91edcaee1
     with:
       repository: gohugoio/hugo
       artifact_name: hugo-releases-json
