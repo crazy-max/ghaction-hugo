@@ -35,10 +35,10 @@ jobs:
     steps:
       -
         name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       -
         name: Run Hugo
-        uses: crazy-max/ghaction-hugo@v2
+        uses: crazy-max/ghaction-hugo@v3
         with:
           version: latest
           extended: false
@@ -46,7 +46,7 @@ jobs:
       -
         name: Deploy to GitHub Pages
         if: github.event_name != 'pull_request'
-        uses: crazy-max/ghaction-github-pages@v3
+        uses: crazy-max/ghaction-github-pages@v4
         with:
           target_branch: gh-pages
           build_dir: public
@@ -58,7 +58,7 @@ jobs:
 
 ### inputs
 
-Following inputs can be used as `step.with` keys
+The following inputs can be used as `step.with` keys
 
 | Name          | Type    | Default   | Description                      |
 |---------------|---------|-----------|----------------------------------|
@@ -68,11 +68,10 @@ Following inputs can be used as `step.with` keys
 
 ## Contributing
 
-Want to contribute? Awesome! The most basic way to show your support is to star the project, or to raise issues. If
-you want to open a pull request, please read the [contributing guidelines](.github/CONTRIBUTING.md).
-
-You can also support this project by [**becoming a sponsor on GitHub**](https://github.com/sponsors/crazy-max) or by
-making a [Paypal donation](https://www.paypal.me/crazyws) to ensure this journey continues indefinitely!
+Want to contribute? Awesome! The most basic way to show your support is to star
+the project, or to raise issues. You can also support this project by [**becoming a sponsor on GitHub**](https://github.com/sponsors/crazy-max)
+or by making a [PayPal donation](https://www.paypal.me/crazyws) to ensure this
+journey continues indefinitely!
 
 Thanks again for your support, it is much appreciated! :pray:
 
