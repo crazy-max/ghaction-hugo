@@ -18,7 +18,7 @@ describe('getRelease', () => {
   });
 
   it('unknown release', async () => {
-    await expect(installer.getRelease('foo')).rejects.toThrowError(
+    await expect(installer.getRelease('foo')).rejects.toThrow(
       new Error(
         'Cannot find Hugo release foo in https://raw.githubusercontent.com/crazy-max/ghaction-hugo/master/.github/hugo-releases.json'
       )
