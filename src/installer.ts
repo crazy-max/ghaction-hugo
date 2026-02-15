@@ -1,5 +1,7 @@
+import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
+import * as semver from 'semver';
 import * as util from 'util';
 import * as core from '@actions/core';
 import * as httpm from '@actions/http-client';
@@ -50,6 +52,8 @@ export async function getHugo(version: string, extended: boolean): Promise<strin
   let extPath: string;
   if (osPlat == 'win32') {
     extPath = await tc.extractZip(downloadPath);
+  } else if (osPlat == 'darwin' && filename.endsWith('.pkg')) {
+    extPath = await extractPkg(downloadPath);
   } else {
     extPath = await tc.extractTar(downloadPath);
   }
@@ -64,10 +68,41 @@ export async function getHugo(version: string, extended: boolean): Promise<strin
   return exePath;
 }
 
+const extractPkg = async (downloadPath: string): Promise<string> => {
+  const pkgPath: string = await tc.extractXar(downloadPath);
+  const payloadPath = path.join(pkgPath, 'Payload');
+  if (!fs.existsSync(payloadPath)) {
+    throw new Error(`No Payload found in package ${downloadPath}`);
+  }
+  const extPath = fs.mkdtempSync(path.join(os.tmpdir(), 'hugo-ext-'));
+  try {
+    await tc.extractTar(payloadPath, extPath);
+  } catch {
+    // some payloads are not gzipped; retry with plain extract mode
+    await tc.extractTar(payloadPath, extPath, 'x');
+  }
+  return extPath;
+};
+
 const getFilename = (version: string, extended: boolean): string => {
+  const name: string = extended ? 'hugo_extended' : 'hugo';
   const platform: string = osPlat == 'win32' ? 'windows' : osPlat == 'darwin' ? 'darwin' : 'Linux';
   const arch: string = osPlat == 'darwin' ? 'universal' : osPlat == 'win32' ? 'amd64' : '64bit';
-  const ext: string = osPlat == 'win32' ? 'zip' : 'tar.gz';
-  const name: string = extended ? 'hugo_extended' : 'hugo';
+  let ext: string;
+  switch (osPlat) {
+    case 'win32':
+      ext = 'zip';
+      break;
+    case 'darwin':
+      if (semver.satisfies(version, '>=0.153.0')) {
+        ext = 'pkg';
+      } else {
+        ext = 'tar.gz';
+      }
+      break;
+    default:
+      ext = 'tar.gz';
+      break;
+  }
   return util.format('%s_%s_%s-%s.%s', name, version, platform, arch, ext);
 };
