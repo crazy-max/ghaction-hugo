@@ -3225,6 +3225,7 @@ __metadata:
     eslint-plugin-prettier: ^5.0.0
     jest: ^29.6.4
     prettier: ^3.0.3
+    semver: ^7.7.4
     ts-jest: ^29.1.1
     ts-node: ^10.9.1
     typescript: ^5.2.2
@@ -4930,6 +4931,15 @@ __metadata:
   bin:
     semver: bin/semver.js
   checksum: 12d8ad952fa353b0995bf180cdac205a4068b759a140e5d3c608317098b3575ac2f1e09182206bf2eb26120e1c0ed8fb92c48c592f6099680de56bb071423ca3
+  languageName: node
+  linkType: hard
+
+"semver@npm:^7.7.4":
+  version: 7.7.4
+  resolution: "semver@npm:7.7.4"
+  bin:
+    semver: bin/semver.js
+  checksum: 9b4a6a58e98b9723fafcafa393c9d4e8edefaa60b8dfbe39e30892a3604cf1f45f52df9cfb1ae1a22b44c8b3d57fec8a9bb7b3e1645431587cb272399ede152e
   languageName: node
   linkType: hard
 
